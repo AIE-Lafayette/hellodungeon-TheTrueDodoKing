@@ -20,7 +20,7 @@ namespace HelloDungeon
         string DisplayMenu(string prompt, string option1, string option2, string option3)
         {
             string playerChoice = "";
-            while (playerChoice != "1" && playerChoice != "2" && playerChoice != "3")
+            while (playerChoice != "1." && playerChoice != "2." && playerChoice != "3.")
             {
                 //display prompt
                 Console.Clear();
@@ -29,20 +29,32 @@ namespace HelloDungeon
                 //displat all options
                 Console.WriteLine("1." + option1);
                 Console.WriteLine("2." + option2);
+
+                if (option3 !="")
+                {
                 Console.WriteLine("3." + option3);
+                }
+                
 
-
+                 
                 Console.WriteLine(">");
                 playerChoice = Console.ReadLine();
 
                 if (playerChoice != "1" && playerChoice != "2" && playerChoice != "3")
                 {
+                    if (playerChoice == "" && option3 !="")
+                    {
+                        continue;
+                    }
                     Console.WriteLine("Invalid Input");
                     Console.WriteLine("Press any key to continue");
                     Console.ReadKey(true);
-                }
 
+                    playerChoice = "";
+                }
+                
             }
+            return playerChoice;
         }
 
             public void Run()
@@ -79,17 +91,22 @@ namespace HelloDungeon
                 Console.WriteLine("Narrator: You are one of the children of the King of Hearts who you know as 'Karts'," +
                     "you are one of the King and Kingdoms well known protectors/caretaker.");
                 Console.WriteLine("You have been summoned by the King for what sounded like a small task nothing to serious.");
+                    
+                    
+               
 
                 while (playerChoice != "1" && playerChoice != "2")
                 {
-                    Console.WriteLine("Which of the Kings children are you?");
-                    //character options/description
-                    Console.WriteLine("1. Samson a strong willed, loyal undead defender of the King  & Kingdom, next in line of the throne if he wishes" +
-                        "        2. Melina the Archer/Hunter a Elf who is quite knowledgeable on survival and the various beast of the wild");
+                //Console.WriteLine("Which of the Kings children are you?");
+                ////character options/description
+                //Console.WriteLine("1. Samson a strong willed, loyal undead defender of the King  & Kingdom, next in line of the throne if he wishes" +
+                //    "        2. Melina the Archer/Hunter a Elf who is quite knowledgeable on survival and the various beast of the wild");
 
-                    Console.Write(">");
-                    playerChoice = Console.ReadLine();
-
+                //Console.Write(">");
+                //playerChoice = Console.ReadLine();
+                 DisplayMenu("Which of the Kings children are you?",
+                    "Samson a strong willed, loyal undead defender of the King & Kingdom, next in line of the throne if he wishes",
+                    "Melina the Archer/Hunter a Elf who is quite skilled in survival and the various beast of the wild", "");
 
                     if (playerChoice == "1")
                     {
@@ -112,16 +129,16 @@ namespace HelloDungeon
                     }
                     else
                     {
-                        Console.Clear();
-                        Console.WriteLine("Must type 1 or 2");
-                        Console.ReadKey(true);
-                    }
+                    Console.Clear();
+                    Console.WriteLine("Must type 1 or 2");
+                    Console.ReadKey(true);
+                }
 
-                    // King talks to player
-                    Console.WriteLine("Narrator: You enter the throne room when you hear a voice shout at you with joy");
+                // King talks to player
+                Console.WriteLine("Narrator: You enter the throne room when you hear a voice shout at you with joy");
                     if (playerName == "Samson")
                     {
-                        Console.WriteLine("Melina! How was your latest Hunt did you find anything?");
+                    Console.WriteLine("Samson! My boy, how have your duties been? Helped any people lately?");
 
                         Console.WriteLine();
                     }
@@ -136,3 +153,6 @@ namespace HelloDungeon
         
     }
 }
+//Console.WriteLine("Melina! How was your latest Hunt did you find anything?");
+
+//Console.WriteLine();
